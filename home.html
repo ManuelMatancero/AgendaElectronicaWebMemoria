@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/home/estilos.css"/>
+    <script src="https://smtpjs.com/v3/smtp.js"></script> 
+    <title>Listado de Contactos</title>
+</head>
+<body onload="mostrarPersonas()">
+    <div class="contenedor" id="cabecero">
+        <h1>Listado de Contactos</h1>
+    </div>
+    <div class="contenedor">
+        <div class="elemento">
+            <table id="persona">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                    <th>Send Email</th>
+                  </tr>
+                </thead>
+                <tbody id="personas">     
+                </tbody>
+              </table>
+        </div>
+       </div>
+    </div>
+    <div class="contenedorForm">
+      <h2 id="stateForm">Agregar</h2>
+      <form id="forma" style="text-align: left;">
+        <input type="text" id="nombre" placeholder="Nombre"/><br>
+        <input type="text" id="apellido" placeholder="Apellido"/><br>
+        <input type="email" id="email" placeholder="Email"/>
+      </form>
+      <div >
+        <button id="botonAdd" style="cursor: pointer" onclick="agregarPersona()" >Guardar</button>
+        <button id="botonCancel" style="cursor: pointer" onclick="cancelar()" >Cancelar</button>
+    </div>
+    
+    <script src="JS/persona.js"></script>
+    <script src="JS/homeJavaScript.js"></script>
+</body>
+</html>
