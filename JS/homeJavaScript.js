@@ -1,3 +1,5 @@
+'use strict';
+
 let estado = true;
 let table = document.getElementById("persona"),rIndex;
 let id=0;
@@ -100,5 +102,50 @@ function stateForm(){
 }
 
 function sendEmail(){
-    window.open('mailto:test@example.com?subject=subject&body=body');
+    let emails = '';
+    let mensaje='';
+    for(var i = 1; i < table.rows.length; i++)
+    {
+        table.rows[i].onclick = function()
+        {
+            rIndex = this.rowIndex;
+            console.log(rIndex);
+            id = this.cells[0].innerHTML;
+            console.log(id);
+            emails= this.cells[3].innerHTML;
+            mensaje='mailto:'+ emails;
+            console.log(mensaje);
+
+            window.open(mensaje);
+        };
+    }
+   
+   
 }
+
+
+function listContact(){
+    let nombreB = document.getElementById('txtbuscar').value;
+    let busqueda =[];
+    let texto2 = '';
+    let contador = 0;
+    for(let i =0; i<personas.length ;i++ ){
+        if(personas[i].nombre.toString() == nombreB.toString()){
+            busqueda.push(personas[i]);
+            contador++;
+        }
+    }
+    for(let j = 0; j<contador;j++){
+        texto2 += `<tr >
+        <td>${busqueda[j]._idPersona}</td>
+        <td>${busqueda[j].nombre}</td>
+        <td>${busqueda[j]._apellido}</td>
+        <td>${busqueda[j].email}</td>
+        <td><button id="botonUpdate" onclick = "updateRow()" style="cursor: pointer" >Editar</button></td>
+        <td><button id="botonDelete" onclick = "deleteRow()" style="cursor: pointer" >Borrar</button></td>
+        <td><button id="botonEmail" onclick = "sendEmail()" style="cursor: pointer" >Email</button></td>
+        </tr>`;
+        }
+        document.getElementById('personas').innerHTML = texto2;
+}
+  
